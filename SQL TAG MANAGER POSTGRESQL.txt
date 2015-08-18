@@ -1,0 +1,29 @@
+CREATE TABLE Administrador (
+  idAdministrador INT NOT NULL,
+  rut VARCHAR(10) NOT NULL,
+  password VARCHAR(32) NOT NULL,
+  nombre VARCHAR(45) NOT NULL,
+  apellido VARCHAR(45) NOT NULL,
+  CONSTRAINT idAdministrador PRIMARY KEY (idAdministrador))
+
+
+CREATE TABLE Producto (
+  idProducto INT NOT NULL,
+  nombre VARCHAR(45) NOT NULL,
+  precio INT NOT NULL,
+  codigoBarra VARCHAR(45) NOT NULL,
+  plu VARCHAR(45) NOT NULL,
+  rutaQR VARCHAR(100) NOT NULL,
+  rutaBarcode VARCHAR(100) NOT NULL,
+  Administrador_idAdministrador INT NOT NULL,
+  CONSTRAINT idProducto PRIMARY KEY (idProducto),
+  CONSTRAINT Administrador_idAdministrador FOREIGN KEY (Administrador_idAdministrador) REFERENCES Administrador (idAdministrador));
+
+
+  CREATE TABLE TagUbicacion (
+  idTagUbicacion INT NOT NULL,
+  numeroPasillo INT NOT NULL,
+  descripcionPasillo VARCHAR(100) NOT NULL,
+  Administrador_idAdministrador INT NOT NULL,
+  CONSTRAINT idTagUbicacion PRIMARY KEY (idTagUbicacion),
+  CONSTRAINT Administrador_idAdministrador FOREIGN KEY (Administrador_idAdministrador) REFERENCES Administrador (idAdministrador));
